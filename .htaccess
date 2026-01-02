@@ -1,0 +1,13 @@
+# Allow access to favicon/logo in root
+<FilesMatch "^(logo\.jpg|favicon\.ico)$">
+    Require all granted
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    Options -MultiViews -Indexes
+    RewriteEngine On
+
+    # Redirect all other requests to public/index.php
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
