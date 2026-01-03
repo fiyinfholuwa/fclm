@@ -531,21 +531,21 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" onclick="navigateTo('home')" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#" onclick="navigateTo('about')" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" onclick="navigateTo('programmes')" class="text-gray-400 hover:text-white transition-colors">Programmes</a></li>
-                        <li><a href="#" onclick="navigateTo('publications')" class="text-gray-400 hover:text-white transition-colors">Publications</a></li>
-                        <li><a href="#" onclick="navigateTo('gallery')" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="{{ route('home') }}"  class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="{{ route('about') }}"  class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="{{ route('programmes') }}"  class="text-gray-400 hover:text-white transition-colors">Programmes</a></li>
+                        <li><a href="{{ route('publications') }}"  class="text-gray-400 hover:text-white transition-colors">Publications</a></li>
+                        <li><a href="{{ route('gallery') }}"  class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-bold mb-6">Our Programmes</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" onclick="navigateTo('programmes', 'fbc')" class="text-gray-400 hover:text-white transition-colors">Believer's Church</a></li>
-                        <li><a href="#" onclick="navigateTo('programmes', 'ministry')" class="text-gray-400 hover:text-white transition-colors">School of Ministry</a></li>
-                        <li><a href="#" onclick="navigateTo('programmes', 'outreach')" class="text-gray-400 hover:text-white transition-colors">Community Outreach</a></li>
-                        <li><a href="#" onclick="navigateTo('donations')" class="text-gray-400 hover:text-white transition-colors">Support Ministry</a></li>
+                        <li><a href="{{ route('programmes') }}#fbc"  class="text-gray-400 hover:text-white transition-colors">Believer's Church</a></li>
+                        <li><a href="{{ route('programmes') }}#ministry"  class="text-gray-400 hover:text-white transition-colors">School of Ministry</a></li>
+                        <li><a href="{{ route('programmes') }}#outreach"  class="text-gray-400 hover:text-white transition-colors">Community Outreach</a></li>
+                        <li><a href="{{ route('donation') }}"  class="text-gray-400 hover:text-white transition-colors">Support Ministry</a></li>
                     </ul>
                 </div>
 
