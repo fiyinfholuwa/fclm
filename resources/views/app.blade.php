@@ -562,7 +562,8 @@
                         </li>
                         <li class="flex items-start text-gray-400">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-brand-orange"></i>
-                            <span>Address will be provided</span>
+                            <span>Firebrand Believers Church (Beulah Centre)
+Plot 9, Sanni Street off Aregbe Road, Aregbesola Area, Abeokuta, Ogun State, Nigeria</span>
                         </li>
                     </ul>
                 </div>
