@@ -14,6 +14,8 @@
 
     <title>FCLM - Firebrand Christian Life Ministry</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    {{-- <link rel="stylesheet" href="{{ asset('output.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -289,7 +291,7 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <nav style="margin-top: -80px;" id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
+    {{-- <nav style="margin-top: -80px;" id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
             <!-- Logo -->
@@ -400,14 +402,99 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}
 
 
+<nav style="margin-top: -80px;" id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <img style="height:80px; width:80px;" src="{{ asset('logo.jpg') }}" alt="Logo"/>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="{{ route('home') }}"
+                   class="nav-link transition-colors font-medium {{ request()->routeIs('home') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                   Home
+                </a>
+
+                <a href="{{ route('about') }}"
+                   class="nav-link transition-colors font-medium {{ request()->routeIs('about') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                   About
+                </a>
+
+                <div class="dropdown relative">
+                    <a href="{{ route('programmes') }}"
+                       class="nav-link transition-colors font-medium {{ request()->routeIs('programmes') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                        Programmes <i class="fas fa-chevron-down text-xs ml-1"></i>
+                    </a>
+
+                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-sm rounded-lg mt-2 py-2 w-56 z-50">
+                        <a href="{{ route('programmes') }}#fbc"
+                           class="block px-4 py-2 hover:bg-red-50 {{ request()->is('programmes#fbc') ? 'text-brand-orange font-semibold' : 'text-gray-700' }}">
+                           Firebrand Believer's Church
+                        </a>
+
+                        <a href="{{ route('programmes') }}#ministry"
+                           class="block px-4 py-2 hover:bg-red-50 {{ request()->is('programmes#ministry') ? 'text-brand-orange font-semibold' : 'text-gray-700' }}">
+                           School of Ministry
+                        </a>
+
+                        <a href="{{ route('programmes') }}#outreach"
+                           class="block px-4 py-2 hover:bg-red-50 {{ request()->is('programmes#outreach') ? 'text-brand-orange font-semibold' : 'text-gray-700' }}">
+                           Community Outreach
+                        </a>
+                    </div>
+                </div>
+
+                <a href="{{ route('publications') }}"
+                   class="nav-link transition-colors font-medium {{ request()->routeIs('publications') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                   Publications
+                </a>
+
+                <a href="{{ route('gallery') }}"
+                   class="nav-link transition-colors font-medium {{ request()->routeIs('gallery') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                   Gallery
+                </a>
+
+                <a href="{{ route('contact') }}"
+                   class="nav-link transition-colors font-medium {{ request()->routeIs('contact') ? 'text-brand-orange font-semibold' : 'text-gray-700 hover:text-brand-orange' }}">
+                   Contact
+                </a>
+
+                <a href="{{ route('donation') }}"
+                   class="gradient-brand text-white px-6 py-2 rounded-full hover:shadow-sm transform hover:scale-105 transition-all">
+                   Give Online
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-700 mobile-menu-button" onclick="toggleMobileMenu(event)">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+            <!-- Mobile Menu - FIXED with proper z-index -->
+            <div id="mobileMenu" class="mobile-menu lg:hidden bg-white shadow-lg rounded-lg mt-2">
+                <div class="py-4 space-y-3">
+                    <a href="{{ route('home') }}"  class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">Home</a>
+                    <a href="{{ route('about') }}"  class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">About Us</a>
+                    <a href="{{ route('programmes') }}" class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">Programmes</a>
+                    <a href="{{ route('publications') }}"  class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">Publications</a>
+                    <a href="{{ route('gallery') }}" class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">Gallery</a>
+                    <a href="{{ route('contact') }}"  class="block px-4 py-3 text-gray-700 hover:bg-red-50 rounded transition-colors">Contact</a>
+                    <a  href="{{ route('donation') }}"  class="w-full gradient-brand text-white px-4 py-3 rounded-lg hover:shadow-lg transition-all mt-4">
+                        Give Online
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
 
     @yield('content')
-
-
 
 
        <!-- Footer -->
@@ -484,7 +571,7 @@
             <div class="border-t border-gray-800 pt-8">
                 <div class="text-center text-gray-400">
                     <p class="mb-2">&copy; 2024 Firebrand Christian Life Ministry. All rights reserved.</p>
-                    <p class="text-sm">Registered with Corporate Affairs Commission (13th May, 2019)</p>
+                    {{-- <p class="text-sm">Registered with Corporate Affairs Commission (13th May, 2019)</p> --}}
                 </div>
             </div>
         </div>
