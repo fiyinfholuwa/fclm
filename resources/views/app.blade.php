@@ -513,16 +513,14 @@
                     </div>
                     <p class="text-gray-400 mb-6">Firebrand Christian Life Ministry - Helping mankind discover God's love and fulfill their divine purpose.</p>
                     <div class="flex space-x-3">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
+                        <a target="_blank" href="https://web.facebook.com/fclmng" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
+                        <a target="_blank" href="https://x.com/gospelmedia/status/1483470748450795520" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
+                      
+                        <a target="_blank" href="https://www.instagram.com/fclmng?igsh=ZG9ndnAwbzlqYWhv" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>

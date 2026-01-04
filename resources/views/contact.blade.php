@@ -55,18 +55,16 @@ Plot 9, Sanni Street off Aregbe Road, Aregbesola Area, Abeokuta, Ogun State, Nig
                             <div class="gradient-brand-purple rounded-xl p-6 text-white">
                                 <h4 class="font-bold mb-4">Follow Us On Social Media</h4>
                                 <div class="flex space-x-4">
-                                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                                    <a  target="_blank" href="https://web.facebook.com/fclmng" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                                    <a target="_blank" href="https://x.com/gospelmedia/status/1483470748450795520" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                                    <a target="_blank" href="https://www.instagram.com/fclmng?igsh=ZG9ndnAwbzlqYWhv" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>

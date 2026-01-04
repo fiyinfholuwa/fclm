@@ -79,7 +79,7 @@
                             </div>
                             <h4 class="font-bold text-gray-900 mb-2">Intermediate Certificate</h4>
                             <p class="text-gray-600 text-sm mb-3">Fridays 4:30-7:30pm</p>
-                            <p class="text-gray-700 text-sm">Basic training for Christian workers</p>
+                            <p class="text-gray-700 text-sm">3 Months Basic training for Christian workers</p>
                         </div>
 
                         <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border border-green-200 card-hover">
