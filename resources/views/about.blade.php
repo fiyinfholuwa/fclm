@@ -6,10 +6,14 @@
     <div id="about" class="" style="margin-top: 80px;">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h1 class="text-5xl font-bold text-gray-900 mb-4">About FCLM</h1>
-                    <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
-                </div>
+                <div class="relative text-center mb-16 bg-cover bg-center h-96" style="background-image: url('{{ asset('gallery/g1.png') }}');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- overlay -->
+    <div class="relative z-10 flex flex-col justify-center h-full">
+        <h1 class="text-5xl font-bold text-white mb-4">About FCLM</h1>
+        <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
+    </div>
+</div>
+
 
                 <div class="bg-white rounded-3xl shadow-sm p-8 lg:p-12 mb-12">
                     <div class="prose prose-lg max-w-none">

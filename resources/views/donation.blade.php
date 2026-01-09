@@ -8,12 +8,18 @@
     <div id="donations" class="" style="margin-top: 80px;">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h1 class="text-5xl font-bold text-gray-900 mb-4">Support Our Ministry</h1>
+             <div class="relative text-center mb-16 bg-cover bg-center h-96" style="background-image: url('{{ asset('https://static.vecteezy.com/system/resources/previews/013/766/012/non_2x/donation-box-and-charity-concept-human-hands-putting-money-cash-love-and-heart-to-donation-box-together-helping-doing-charity-illustration-free-vector.jpg') }}');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- overlay -->
+    <div class="relative z-10 flex flex-col justify-center h-full">
+<h1 class="text-5xl font-bold text-gray-900 mb-4 text-white">Support Our Ministry</h1>
                     <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
-                    <p class="text-xl text-gray-600 mt-4">God loves a cheerful giver</p>
-                </div>
+                    <p class="text-xl text-gray-600 mt-4 text-white">God loves a cheerful giver</p>        
+                    {{-- <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div> --}}
+    </div>
+</div>
 
+
+                
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     <div class="bg-white rounded-2xl shadow-sm p-8 text-center card-hover">
                         <div class="w-16 h-16 gradient-brand-green rounded-full flex items-center justify-center mx-auto mb-4">

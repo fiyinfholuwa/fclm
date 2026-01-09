@@ -5,12 +5,17 @@
 <div id="publications" style="margin-top: 80px;">
     <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-900 mb-4">Publications & Resources</h1>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto rounded-full"></div>
-                <p class="text-xl text-gray-600 mt-4">Access, read, and download free spiritual growth materials</p>
-            </div>
 
+         <div class="relative text-center mb-16 bg-cover bg-center h-96" style="background-image: url('{{ asset('gallery/g9.png') }}');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- overlay -->
+    <div class="relative z-10 flex flex-col justify-center h-full">
+<h1 class="text-5xl font-bold text-gray-900 mb-4 text-white">Publications & Resources</h1>
+                    <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
+                    <p class="text-xl text-gray-600 mt-4 text-white">Access, read, and download free spiritual growth materials</p>        
+    </div>
+</div>
+
+            
             <!-- Category Tabs -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button onclick="showCategory('tracts')" class="category-tab active px-6 py-3 rounded-full font-semibold transition-all bg-purple-600 text-white">

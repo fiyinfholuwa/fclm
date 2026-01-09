@@ -8,12 +8,18 @@
     <div id="contact" class="" style="margin-top: 80px;">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h1 class="text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
-                    <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
-                    <p class="text-xl text-gray-600 mt-4">We'd love to hear from you</p>
-                </div>
 
+             <div class="relative text-center mb-16 bg-cover bg-center h-96" style="background-image: url('{{ asset('https://www.shutterstock.com/image-photo/contact-us-concept-woman-hand-600nw-2202135989.jpg') }}');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- overlay -->
+    <div class="relative z-10 flex flex-col justify-center h-full">
+<h1 class="text-5xl font-bold text-gray-900 mb-4 text-white">Contact Us</h1>
+                    <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div>
+                    <p class="text-xl text-gray-600 mt-4 text-white">We'd love to hear from you</p>        
+                    {{-- <div class="w-24 h-1 gradient-brand mx-auto rounded-full"></div> --}}
+    </div>
+</div>
+
+                
                 <div class="grid lg:grid-cols-2 gap-12">
                     <div>
                         <h2 class="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
