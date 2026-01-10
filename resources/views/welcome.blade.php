@@ -10,7 +10,7 @@
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-8">
                         <div class="inline-block">
-                            <span class="bg-red-100 text-brand-red px-4 py-2 rounded-full text-sm font-semibold">Established 2010 • Registered 2019</span>
+                            {{-- <span class="bg-red-100 text-brand-red px-4 py-2 rounded-full text-sm font-semibold">Established 2010 • Registered 2019</span> --}}
                         </div>
                         <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                             Welcome to <span class="gradient-text">FCLM</span>
