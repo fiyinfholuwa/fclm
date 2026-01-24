@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="relative">
+                    {{-- <div class="relative">
                         <div class="image-placeholder rounded-3xl shadow-2xl aspect-[4/3]">
                             <img style=" width:100%; border-radius:50px;" src="{{ asset('lead_pastor.jpg') }}">
                         </div>
@@ -53,7 +53,106 @@
                             <p class="text-sm font-semibold">Join Us Weekly</p>
                             <p class="text-2xl font-bold">Sun 9-11am</p>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    <div class="relative slider-container">
+    <div class="image-placeholder rounded-3xl shadow-2xl aspect-[4/3] overflow-hidden">
+        <div class="slider">
+            <img style="" src="{{ asset('lead_pastor.jpg') }}" class="slide active">
+            <img src="{{ asset('https://media.istockphoto.com/id/1505865534/photo/open-bible-on-a-wooden-board-near-the-river.jpg?s=2048x2048&w=is&k=20&c=O15wWy1p9u03-wLCZU374aucL0mBEWCU5pTSBxud43Y=') }}" class="slide">
+            <img src="{{ asset('https://media.istockphoto.com/id/2179437126/photo/a-man-with-a-smart-phone-and-a-bible-in-his-hands-outside.jpg?s=2048x2048&w=is&k=20&c=2kQ3ITDUeA_GeOIMvPuZkYHk2bBPbtbYlLElEwKvjDM=') }}" class="slide">
+        </div>
+    </div>
+
+    <!-- Badge stays exactly the same -->
+    <div class="absolute -bottom-6 -right-6 gradient-brand text-white p-6 rounded-2xl shadow-xl z-10">
+        <p class="text-sm font-semibold">Join Us Weekly</p>
+        <p class="text-2xl font-bold">Sun 9-11am</p>
+    </div>
+
+    <!-- Dots -->
+    <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+<style>
+.slider-container {
+    position: relative;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50px;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1s ease, transform 1.2s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+</style>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            dots[i].classList.toggle('active', i === index);
+        });
+        current = index;
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => showSlide(i));
+    });
+
+    setInterval(() => {
+        let next = (current + 1) % slides.length;
+        showSlide(next);
+    }, 4000);
+</script>
+
                 </div>
             </div>
         </section>

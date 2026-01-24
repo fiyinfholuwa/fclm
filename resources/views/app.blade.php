@@ -16,7 +16,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     {{-- <link rel="stylesheet" href="{{ asset('output.css') }}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -410,7 +410,8 @@
             <div class="flex justify-between items-center py-4">
             <!-- Logo -->
             <div class="flex items-center space-x-3 cursor-pointer">
-                <img style="height:80px; width:80px;" src="{{ asset('logo.jpg') }}" alt="Logo"/>
+            <a href="{{ route('home') }}">                <img style="height:80px; width:80px;" src="{{ asset('logo.jpg') }}" alt="Logo"/>
+</a>
             </div>
 
             <!-- Desktop Menu -->
@@ -516,8 +517,9 @@
                         <a target="_blank" href="https://web.facebook.com/fclmng" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a target="_blank" href="https://x.com/gospelmedia/status/1483470748450795520" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
-                            <i class="fab fa-twitter"></i>
+                        <a target="_blank" href="https://x.com/firebrandac" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">
+
+<i class="fa-brands fa-x-twitter"></i>
                         </a>
                       
                         <a target="_blank" href="https://www.instagram.com/fclmng?igsh=ZG9ndnAwbzlqYWhv" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-all">

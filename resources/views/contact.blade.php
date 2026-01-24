@@ -64,8 +64,11 @@ Plot 9, Sanni Street off Aregbe Road, Aregbesola Area, Abeokuta, Ogun State, Nig
                                     <a  target="_blank" href="https://web.facebook.com/fclmng" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a target="_blank" href="https://x.com/gospelmedia/status/1483470748450795520" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
-                                        <i class="fab fa-twitter"></i>
+
+                                    
+                      
+                                    <a target="_blank" href="https://x.com/firebrandac" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+<i class="fa-brands fa-x-twitter"></i>
                                     </a>
                                     <a target="_blank" href="https://www.instagram.com/fclmng?igsh=ZG9ndnAwbzlqYWhv" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
                                         <i class="fab fa-instagram"></i>
