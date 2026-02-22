@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
     
 
     <!-- CONTACT PAGE -->
@@ -79,41 +79,136 @@ Plot 9, Sanni Street off Aregbe Road, Aregbesola Area, Abeokuta, Ogun State, Nig
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-3xl shadow-sm p-8 lg:p-12">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us A Message</h2>
-                        <form class="space-y-6" onsubmit="handleContactForm(event)">
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all" placeholder="Your name">
-                            </div>
+                   <div class="bg-white rounded-3xl shadow-sm p-8 lg:p-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us A Message</h2>
 
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Email Address</label>
-                                <input type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all" placeholder="your@email.com">
-                            </div>
+    <form class="space-y-6" onsubmit="handleContactForm(event)">
+        @csrf
 
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                                <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all" placeholder="+234">
-                            </div>
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+            <input name="full_name" type="text" required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all"
+                placeholder="Your name">
+        </div>
 
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Subject</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all" placeholder="Message subject">
-                            </div>
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+            <input name="email" type="email" required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all"
+                placeholder="your@email.com">
+        </div>
 
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Message</label>
-                                <textarea required rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all resize-none" placeholder="Your message here..."></textarea>
-                            </div>
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+            <input name="phone" type="tel" required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all"
+                placeholder="+234">
+        </div>
 
-                            <button type="submit" class="w-full gradient-brand text-white py-4 rounded-lg hover:shadow-sm transform hover:scale-105 transition-all font-semibold">
-                                Send Message <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                        </form>
-                    </div>
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Subject</label>
+            <input name="subject" type="text" required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all"
+                placeholder="Message subject">
+        </div>
+
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Message</label>
+            <textarea name="message" rows="5" required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-red focus:ring-2 focus:ring-red-200 outline-none transition-all resize-none"
+                placeholder="Your message here..."></textarea>
+        </div>
+
+        <button type="submit" id="contactBtn"
+            class="w-full gradient-brand text-white py-4 rounded-lg transition-all font-semibold flex items-center justify-center gap-3">
+            <span id="btnText">Send Message</span>
+            <span id="btnSpinner" class="hidden loader"></span>
+        </button>
+    </form>
+</div>
+
+<!-- TOAST -->
+<div id="toast"
+     class="fixed top-6 right-6 z-50 hidden px-6 py-4 rounded-lg shadow-lg text-white text-sm">
+</div>
+<style>
+.loader {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,0.4);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.toast-success { background-color: #16a34a; }
+.toast-error { background-color: #dc2626; }
+</style>
                 </div>
             </div>
         </section>
     </div>
+
+
+<script>
+function handleContactForm(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const btn = document.getElementById('contactBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('btnSpinner');
+
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+    spinner.classList.remove('hidden');
+
+    const data = new FormData(form);
+
+    fetch('/save/contact', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: data
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status) {
+            showToast(res.message, true);
+            form.reset();
+        } else {
+            showToast(res.message ?? 'Something went wrong', false);
+        }
+    })
+    .catch(() => {
+        showToast('Network error. Please try again.', false);
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btnText.textContent = 'Send Message';
+        spinner.classList.add('hidden');
+    });
+}
+
+function showToast(message, success = true) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+
+    toast.className = `fixed top-6 right-6 z-50 px-6 py-4 rounded-lg shadow-lg text-white text-sm ${
+        success ? 'toast-success' : 'toast-error'
+    }`;
+
+    toast.classList.remove('hidden');
+
+    setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 4000);
+}
+</script>
  @endsection

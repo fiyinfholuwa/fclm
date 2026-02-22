@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HomeSlider;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function home(){
-        return view('welcome');
+        $sliders  = HomeSlider::where('status',  'active')->get();
+        return view('welcome', compact('sliders'));
     }
     public function about(){
         return view('about');
@@ -16,7 +19,8 @@ class FrontendController extends Controller
         return view('programmes');
     }
     public function publications(){
-        return view('publications');
+        $publications= Publication::where('status', 'active')->get();
+        return view('publications', compact('publications'));
     }
     public function donation(){
         return view('donation');

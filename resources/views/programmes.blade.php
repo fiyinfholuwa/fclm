@@ -113,9 +113,9 @@
                                 <h4 class="font-bold text-xl mb-2">Virtual Campus Available</h4>
                                 <p class="opacity-90">Study online at your own pace with live and recorded lectures</p>
                             </div>
-                            <button class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:shadow-sm transition-all">
+                            <a target="_blank" href="https://fsom.neolms.com/join_no_access_code" class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:shadow-sm transition-all">
                                 Enroll Now
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

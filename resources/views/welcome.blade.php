@@ -56,13 +56,35 @@
                     </div> --}}
 
                     <div class="relative slider-container">
+
+       @if(count($sliders) > 0)
     <div class="image-placeholder rounded-3xl shadow-2xl aspect-[4/3] overflow-hidden">
         <div class="slider">
-            <img style="" src="{{ asset('lead_pastor.jpg') }}" class="slide active">
-            <img src="{{ asset('https://media.istockphoto.com/id/1505865534/photo/open-bible-on-a-wooden-board-near-the-river.jpg?s=2048x2048&w=is&k=20&c=O15wWy1p9u03-wLCZU374aucL0mBEWCU5pTSBxud43Y=') }}" class="slide">
-            <img src="{{ asset('https://media.istockphoto.com/id/2179437126/photo/a-man-with-a-smart-phone-and-a-bible-in-his-hands-outside.jpg?s=2048x2048&w=is&k=20&c=2kQ3ITDUeA_GeOIMvPuZkYHk2bBPbtbYlLElEwKvjDM=') }}" class="slide">
+            @foreach ($sliders as $slider)
+                <img 
+                    src="{{ asset('storage/'.$slider->image_path) }}" 
+                    class="slide {{ $loop->first ? 'active' : '' }}"
+                >
+            @endforeach
         </div>
     </div>
+@else
+    <div class="image-placeholder rounded-3xl shadow-2xl aspect-[4/3] overflow-hidden">
+        <div class="slider">
+            <img src="{{ asset('lead_pastor.jpg') }}" class="slide active">
+
+            <img 
+                src="https://media.istockphoto.com/id/1505865534/photo/open-bible-on-a-wooden-board-near-the-river.jpg?s=2048x2048&w=is&k=20&c=O15wWy1p9u03-wLCZU374aucL0mBEWCU5pTSBxud43Y="
+                class="slide"
+            >
+
+            <img 
+                src="https://media.istockphoto.com/id/2179437126/photo/a-man-with-a-smart-phone-and-a-bible-in-his-hands-outside.jpg?s=2048x2048&w=is&k=20&c=2kQ3ITDUeA_GeOIMvPuZkYHk2bBPbtbYlLElEwKvjDM="
+                class="slide"
+            >
+        </div>
+    </div>
+@endif
 
     <!-- Badge stays exactly the same -->
     <div class="absolute -bottom-6 -right-6 gradient-brand text-white p-6 rounded-2xl shadow-xl z-10">
