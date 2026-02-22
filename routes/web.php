@@ -4,14 +4,20 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Models\ContactEnquiry;
+use App\Models\HomeSlider;
+use App\Models\Publication;
 use Illuminate\Support\Facades\Route;
 
 
 
+
+
+
 Route::get('/dashboard', function () {
-    $sliders = 10;
-    $publication = 20;
-    $messages = 40;
+    $sliders = HomeSlider::count();
+    $publication = Publication::count();
+    $messages = ContactEnquiry::count();
     return view('admin.dashboard', compact('sliders', 'publication', 'messages'));
 })->middleware(['auth'])->name('dashboard');
 

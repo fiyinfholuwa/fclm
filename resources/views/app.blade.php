@@ -15,10 +15,12 @@
     <title>FCLM - Firebrand Christian Life Ministry</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     {{-- <link rel="stylesheet" href="{{ asset('output.css') }}"> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         :root {
             --brand-orange: #f17e28;
@@ -33,10 +35,13 @@
             --brand-indigo: #3a0ca3;
         }
         
-        * {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
+        *{
+   font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
         
         body {
             background-color: var(--brand-bg);
