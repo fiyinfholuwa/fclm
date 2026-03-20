@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('content')
+
+@php
+    $publications = $publications ?? collect();
+@endphp
+
 <!-- PUBLICATIONS PAGE -->
 <div id="publications" style="margin-top: 80px;">
     <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -188,13 +193,8 @@
         </div>
         <div class="p-6 overflow-y-auto max-h-[70vh]">
             <div class="flex flex-col items-center">
-                @if($publication->thumbnail_path)
-                <img src="{{ asset('storage/'.$publication->thumbnail_path) }}" alt="Thumbnail" class="w-64 h-80 object-cover rounded-xl mb-6">
-                @else
-                <div class="w-64 h-80 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl mb-6 flex items-center justify-center">
-                    <i class="fas fa-book-open text-purple-600 text-8xl"></i>
-                </div>
-                @endif
+                <!-- Thumbnail will be dynamically added by JavaScript -->
+                <div id="modalThumbnail" class="mb-6"></div>
                 <div id="modalContent" class="prose max-w-none">
                     <!-- Dynamic content will be loaded here -->
                 </div>
@@ -302,6 +302,16 @@ function viewPublication(id) {
     }
     
     document.getElementById('modalTitle').textContent = publication.title;
+    
+    // Build thumbnail HTML
+    const thumbnailDiv = document.getElementById('modalThumbnail');
+    if (publication.thumbnail_path) {
+        thumbnailDiv.innerHTML = `<img src="/storage/${publication.thumbnail_path}" alt="Thumbnail" class="w-64 h-80 object-cover rounded-xl mb-6">`;
+    } else {
+        thumbnailDiv.innerHTML = `<div class="w-64 h-80 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl mb-6 flex items-center justify-center">
+            <i class="fas fa-book-open text-purple-600 text-8xl"></i>
+        </div>`;
+    }
     
     // Build modal content
     let content = `<h2 class="text-2xl font-bold mb-4">${publication.title}</h2>`;

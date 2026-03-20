@@ -39,6 +39,14 @@
                                 <p>New Messages</p>
                             </div>
                         </div>
+                        <div class="stat-card">
+                            <div class="stat-icon messages">
+<i class="fas fa-chart-line"></i>                            </div>
+                            <div class="stat-info">
+                                <h3 id="message-count">{{ $totalVisits }}</h3>
+                                <p>Total Visits</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card">

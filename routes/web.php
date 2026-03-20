@@ -8,6 +8,7 @@ use App\Models\ContactEnquiry;
 use App\Models\HomeSlider;
 use App\Models\Publication;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -18,7 +19,8 @@ Route::get('/dashboard', function () {
     $sliders = HomeSlider::count();
     $publication = Publication::count();
     $messages = ContactEnquiry::count();
-    return view('admin.dashboard', compact('sliders', 'publication', 'messages'));
+    $totalVisits = DB::table('visits')->count();
+    return view('admin.dashboard', compact('sliders', 'publication', 'messages', 'totalVisits'));
 })->middleware(['auth'])->name('dashboard');
 
 
