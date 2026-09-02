@@ -46,8 +46,46 @@
 
         
         body {
-            background-color: var(--brand-bg);
+            background: #f8fafc;
             color: var(--brand-dark);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: #fed7aa; color: #7c2d12; }
+
+        #navbar {
+            top: 0;
+            margin-top: 0 !important;
+            background: rgba(255, 255, 255, .88) !important;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(15, 23, 42, .07);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06) !important;
+        }
+        #navbar > div > div { min-height: 76px; padding-top: .6rem; padding-bottom: .6rem; }
+        #navbar img { width: 56px !important; height: 56px !important; border-radius: 14px !important; box-shadow: 0 8px 18px rgba(15,23,42,.12); }
+        #navbar .nav-link { font-size: .875rem; letter-spacing: .01em; }
+        #navbar .gradient-brand { box-shadow: 0 8px 18px rgba(220, 38, 38, .2); }
+
+        .page-header {
+            min-height: 330px;
+            height: auto !important;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 22px 50px rgba(15, 23, 42, .18);
+            isolation: isolate;
+            z-index: 0;
+        }
+        .page-header::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(115deg, rgba(15,23,42,.78), rgba(15,23,42,.25)); }
+        .page-header > .absolute { display: none; }
+        .page-header > .relative { z-index: 1; }
+        .page-header h1 { font-size: clamp(2.45rem, 5vw, 4.5rem) !important; letter-spacing: -.045em; line-height: 1.05; }
+        .page-header p { max-width: 42rem; margin-left: auto; margin-right: auto; color: #f8fafc !important; }
+
+        section.py-20 { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+        .bg-white.rounded-3xl, .bg-white.rounded-2xl, .bg-white.rounded-xl {
+            border: 1px solid rgba(148, 163, 184, .16);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .055);
         }
         
         /* Page Animations */
@@ -81,13 +119,15 @@
         /* Cards */
         .card-hover {
             background: #fff;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+            border-radius: 18px;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            border: 1px solid rgba(148, 163, 184, .14);
         }
         
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(241, 126, 40, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 22px 40px rgba(15, 23, 42, .13);
+            border-color: rgba(241, 126, 40, .25);
         }
         
         /* Dropdown */
@@ -103,12 +143,7 @@
         
         /* Hero Section */
         .hero-gradient {
-            background: linear-gradient(
-                135deg,
-                var(--brand-bg),
-                #ffffff,
-                var(--brand-bg)
-            );
+            background: radial-gradient(circle at 85% 12%, rgba(251, 146, 60, .18), transparent 28rem), radial-gradient(circle at 10% 85%, rgba(12, 123, 184, .12), transparent 25rem), #fff;
         }
         
         /* Parallax */
@@ -295,6 +330,12 @@
         .gradient-brand-purple {
             background: linear-gradient(135deg, var(--brand-purple), var(--brand-indigo));
         }
+
+        footer { border-top: 1px solid rgba(255,255,255,.08); }
+        footer a { transition: color .2s ease, transform .2s ease; }
+        footer a:hover { transform: translateX(2px); }
+        @media (max-width: 1024px) { #navbar > div > div { min-height: 70px; } }
+        @media (max-width: 640px) { section.py-20 { padding-top: 3.75rem; padding-bottom: 3.75rem; } .page-header { min-height: 250px; border-radius: 20px; } }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -412,7 +453,7 @@
 </nav> --}}
 
 
-<nav style="margin-top: -80px;" id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
             <!-- Logo -->

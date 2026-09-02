@@ -115,7 +115,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 50px;
     opacity: 0;
     transform: scale(1.05);

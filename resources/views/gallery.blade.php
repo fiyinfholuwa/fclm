@@ -4,7 +4,8 @@
 <div style="margin-top: 80px;">
     <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 max-w-2xl mx-auto">
+                <span class="inline-flex items-center rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-700 mb-5"><i class="fas fa-camera mr-2"></i> Our memories</span>
                 <h1 class="text-5xl font-bold text-gray-900 mb-4">Photo Gallery</h1>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
                 <p class="text-xl text-gray-600 mt-4">Moments of faith, fellowship, and ministry</p>
