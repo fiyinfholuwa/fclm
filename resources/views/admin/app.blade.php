@@ -799,6 +799,17 @@
     </li>
 
     <li class="nav-item">
+        <a href="{{ route('gallery.manage') }}" class="nav-link {{ request()->routeIs('gallery.*') ? 'active' : '' }}">
+            <i class="fas fa-image"></i><span>Gallery</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('outreach.manage') }}" class="nav-link {{ request()->routeIs('outreach.*') ? 'active' : '' }}">
+            <i class="fas fa-hands-helping"></i><span>Community Outreach</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a href="{{ route('messages.view') }}" 
            class="nav-link {{ request()->routeIs('messages.view') ? 'active' : '' }}">
             <i class="fas fa-envelope"></i>

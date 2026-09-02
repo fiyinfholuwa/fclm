@@ -4,15 +4,94 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactEnquiry;
 use App\Models\HomeSlider;
+use App\Models\GalleryImage;
+use App\Models\OutreachProgramme;
 use App\Models\Publication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
     public function view_slider(){
         return view('admin.slider');
+    }
+
+    public function gallery()
+    {
+        return view('admin.gallery', ['images' => GalleryImage::orderBy('display_order')->get()]);
+    }
+
+    public function storeGallery(Request $request)
+    {
+        $data = $request->validate(['title' => 'nullable|string|max:255', 'image' => 'required|image|max:4096', 'display_order' => 'required|integer|min:1', 'status' => 'required|in:active,inactive']);
+        $data['image_path'] = $this->storeGalleryUpload($request);
+        $data['is_uploaded'] = true;
+        GalleryImage::create($data);
+        return back()->with('success', 'Gallery image added successfully.');
+    }
+
+    public function updateGallery(Request $request, GalleryImage $galleryImage)
+    {
+        $data = $request->validate(['title' => 'nullable|string|max:255', 'image' => 'nullable|image|max:4096', 'display_order' => 'required|integer|min:1', 'status' => 'required|in:active,inactive']);
+        if ($request->hasFile('image')) {
+            if ($galleryImage->is_uploaded) File::delete(public_path($galleryImage->image_path));
+            $data['image_path'] = $this->storeGalleryUpload($request);
+            $data['is_uploaded'] = true;
+        }
+        $galleryImage->update($data);
+        return back()->with('success', 'Gallery image updated successfully.');
+    }
+
+    public function deleteGallery(GalleryImage $galleryImage)
+    {
+        if ($galleryImage->is_uploaded) File::delete(public_path($galleryImage->image_path));
+        $galleryImage->delete();
+        return back()->with('success', 'Gallery image removed successfully.');
+    }
+
+    public function outreach()
+    {
+        return view('admin.outreach', ['programmes' => OutreachProgramme::orderBy('display_order')->get()]);
+    }
+
+    public function storeOutreach(Request $request)
+    {
+        OutreachProgramme::create($this->outreachData($request));
+        return back()->with('success', 'Outreach programme added successfully.');
+    }
+
+    public function updateOutreach(Request $request, OutreachProgramme $outreachProgramme)
+    {
+        $outreachProgramme->update($this->outreachData($request));
+        return back()->with('success', 'Outreach programme updated successfully.');
+    }
+
+    public function deleteOutreach(OutreachProgramme $outreachProgramme)
+    {
+        $outreachProgramme->delete();
+        return back()->with('success', 'Outreach programme removed successfully.');
+    }
+
+    private function outreachData(Request $request): array
+    {
+        return $request->validate(['title' => 'required|string|max:255', 'description' => 'required|string|max:1000', 'icon' => 'required|string|max:100', 'colour' => 'required|in:yellow,green,blue,red,purple', 'display_order' => 'required|integer|min:1', 'status' => 'required|in:active,inactive']);
+    }
+
+    private function storeGalleryUpload(Request $request): string
+    {
+        $directory = public_path('uploads/gallery');
+        // Create public/uploads/gallery (and any missing parent folders) on the first upload.
+        if (! File::isDirectory($directory)) {
+            File::makeDirectory($directory, 0755, true, true);
+        }
+
+        $file = $request->file('image');
+        $filename = uniqid('gallery_', true).'.'.$file->getClientOriginalExtension();
+        $file->move($directory, $filename);
+
+        return 'uploads/gallery/'.$filename;
     }
 
         // Get all sliders (AJAX)

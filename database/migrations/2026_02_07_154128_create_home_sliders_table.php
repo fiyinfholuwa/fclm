@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle')->nullable();
-            $table->string('image_path'); // Store uploaded image path
+            $table->string('image_path')->nullable(); // Store uploaded image path
             $table->string('image_url')->nullable(); // Or external URL
             $table->string('link')->nullable();
             $table->integer('display_order')->default(1);

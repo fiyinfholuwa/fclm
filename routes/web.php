@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::get('/dashboard', function () {
-    $sliders = HomeSlider::count();
+    $sliders = HomeSlider::where('status', 'active')->count();
     $publication = Publication::count();
     $messages = ContactEnquiry::count();
     $totalVisits = DB::table('visits')->count();
@@ -39,6 +39,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sliders/{id}', [AdminController::class, 'getSingleSlider'])->name('admin.sliders.single');
     Route::put('/admin/sliders/update/{id}', [AdminController::class, 'updateSlider'])->name('admin.sliders.update');
     Route::delete('/admin/sliders/{id}', [AdminController::class, 'deleteSlider'])->name('admin.sliders.delete');
+
+    Route::get('/gallery/manage', [AdminController::class, 'gallery'])->name('gallery.manage');
+    Route::post('/gallery/manage', [AdminController::class, 'storeGallery'])->name('gallery.store');
+    Route::put('/gallery/manage/{galleryImage}', [AdminController::class, 'updateGallery'])->name('gallery.update');
+    Route::delete('/gallery/manage/{galleryImage}', [AdminController::class, 'deleteGallery'])->name('gallery.delete');
+    Route::get('/outreach/manage', [AdminController::class, 'outreach'])->name('outreach.manage');
+    Route::post('/outreach/manage', [AdminController::class, 'storeOutreach'])->name('outreach.store');
+    Route::put('/outreach/manage/{outreachProgramme}', [AdminController::class, 'updateOutreach'])->name('outreach.update');
+    Route::delete('/outreach/manage/{outreachProgramme}', [AdminController::class, 'deleteOutreach'])->name('outreach.delete');
     
     Route::get('/publication', [AdminController::class, 'view_publication'])->name('publication.view');
     Route::get('/admin/publications/data', [AdminController::class, 'getPublications'])->name('admin.publications.data');

@@ -136,23 +136,13 @@
                     </p>
 
                     <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-yellow-50 rounded-xl p-6 text-center">
-                            <i class="fas fa-city text-yellow-600 text-4xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Inner City Mission</h4>
-                            <p class="text-gray-700 text-sm">Reaching urban communities</p>
-                        </div>
-
-                        <div class="bg-green-50 rounded-xl p-6 text-center">
-                            <i class="fas fa-mountain text-green-600 text-4xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Rural Evangelism</h4>
-                            <p class="text-gray-700 text-sm">Taking the gospel to villages</p>
-                        </div>
-
-                        <div class="bg-blue-50 rounded-xl p-6 text-center">
-                            <i class="fas fa-broadcast-tower text-blue-600 text-4xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Media Outreach</h4>
-                            <p class="text-gray-700 text-sm">Digital evangelism</p>
-                        </div>
+                        @foreach ($outreachProgrammes as $programme)
+                            <div class="bg-{{ $programme->colour }}-50 rounded-xl p-6 text-center">
+                                <i class="fas {{ $programme->icon }} text-{{ $programme->colour }}-600 text-4xl mb-4"></i>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ $programme->title }}</h4>
+                                <p class="text-gray-700 text-sm">{{ $programme->description }}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

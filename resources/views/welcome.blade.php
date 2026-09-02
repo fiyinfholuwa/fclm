@@ -62,7 +62,7 @@
         <div class="slider">
             @foreach ($sliders as $slider)
                 <img 
-                    src="{{ asset('storage/'.$slider->image_path) }}" 
+                    src="{{ $slider->image_path ? asset('storage/'.$slider->image_path) : $slider->image_url }}"
                     class="slide {{ $loop->first ? 'active' : '' }}"
                 >
             @endforeach
@@ -94,9 +94,9 @@
 
     <!-- Dots -->
     <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        @foreach ($sliders as $slider)
+            <span class="dot {{ $loop->first ? 'active' : '' }}"></span>
+        @endforeach
     </div>
 </div>
 <style>
