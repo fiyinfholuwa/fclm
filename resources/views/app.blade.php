@@ -25,14 +25,14 @@
     <style>
         
         :root {
-            --brand-orange: #f17e28;
-            --brand-blue: #0c7bb8;
-            --brand-gold: #b8a168;
+            --brand-orange: #d97706;
+            --brand-blue: #0f766e;
+            --brand-gold: #b45309;
             --brand-flame: #ff8c00;
-            --brand-bg: #fef9f3;
-            --brand-dark: #2b2b2b;
-            --brand-red: #e63946;
-            --brand-green: #2a9d8f;
+            --brand-bg: #fcfcfb;
+            --brand-dark: #172033;
+            --brand-red: #c2410c;
+            --brand-green: #15803d;
             --brand-purple: #7209b7;
             --brand-indigo: #3a0ca3;
         }
@@ -46,7 +46,7 @@
 
         
         body {
-            background: #f8fafc;
+            background: #fcfcfb;
             color: var(--brand-dark);
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
@@ -57,35 +57,38 @@
         #navbar {
             top: 0;
             margin-top: 0 !important;
-            background: rgba(255, 255, 255, .88) !important;
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(15, 23, 42, .07);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, .06) !important;
+            background: rgba(252, 252, 251, .96) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e8e7e4;
+            box-shadow: none !important;
         }
         #navbar > div > div { min-height: 76px; padding-top: .6rem; padding-bottom: .6rem; }
         #navbar img { width: 56px !important; height: 56px !important; border-radius: 14px !important; box-shadow: 0 8px 18px rgba(15,23,42,.12); }
         #navbar .nav-link { font-size: .875rem; letter-spacing: .01em; }
-        #navbar .gradient-brand { box-shadow: 0 8px 18px rgba(220, 38, 38, .2); }
+        #navbar .gradient-brand { background: var(--brand-dark); border-radius: 8px; box-shadow: none; }
 
+        /* Inner-page title: deliberately text-led, without the old large image banner. */
         .page-header {
-            min-height: 330px;
+            min-height: 0;
             height: auto !important;
-            overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 22px 50px rgba(15, 23, 42, .18);
-            isolation: isolate;
-            z-index: 0;
+            padding: 3.25rem 3.5rem;
+            overflow: visible;
+            border-radius: 0;
+            box-shadow: none;
+            isolation: auto;
+            background: #f3f1ec !important;
+            border-left: 3px solid var(--brand-red);
         }
-        .page-header::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(115deg, rgba(15,23,42,.78), rgba(15,23,42,.25)); }
-        .page-header > .absolute { display: none; }
-        .page-header > .relative { z-index: 1; }
-        .page-header h1 { font-size: clamp(2.45rem, 5vw, 4.5rem) !important; letter-spacing: -.045em; line-height: 1.05; }
-        .page-header p { max-width: 42rem; margin-left: auto; margin-right: auto; color: #f8fafc !important; }
+        .page-header::after, .page-header > .absolute { display: none; }
+        .page-header > .relative { display: block !important; height: auto !important; text-align: left !important; }
+        .page-header h1 { font-size: clamp(2.35rem, 4vw, 4rem) !important; letter-spacing: -.055em; line-height: 1.03; color: var(--brand-dark) !important; }
+        .page-header p { max-width: 42rem; margin: .75rem 0 0 !important; color: #526075 !important; }
+        .page-header .w-24 { margin: 1.25rem 0 0 !important; width: 3.25rem; height: 2px; background: var(--brand-red); }
 
-        section.py-20 { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+        section.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
         .bg-white.rounded-3xl, .bg-white.rounded-2xl, .bg-white.rounded-xl {
-            border: 1px solid rgba(148, 163, 184, .16);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, .055);
+            border: 1px solid #e8e7e4;
+            box-shadow: none;
         }
         
         /* Page Animations */
@@ -119,15 +122,15 @@
         /* Cards */
         .card-hover {
             background: #fff;
-            border-radius: 18px;
-            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-            border: 1px solid rgba(148, 163, 184, .14);
+            border-radius: 12px;
+            transition: transform .25s ease, border-color .25s ease;
+            border: 1px solid #e8e7e4;
         }
         
         .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 22px 40px rgba(15, 23, 42, .13);
-            border-color: rgba(241, 126, 40, .25);
+            transform: translateY(-3px);
+            box-shadow: none;
+            border-color: var(--brand-orange);
         }
         
         /* Dropdown */
@@ -143,7 +146,7 @@
         
         /* Hero Section */
         .hero-gradient {
-            background: radial-gradient(circle at 85% 12%, rgba(251, 146, 60, .18), transparent 28rem), radial-gradient(circle at 10% 85%, rgba(12, 123, 184, .12), transparent 25rem), #fff;
+            background: linear-gradient(110deg, #fff 0%, #fffaf1 55%, #f3f6f4 100%);
         }
         
         /* Parallax */
@@ -316,26 +319,67 @@
         }
         
         .gradient-brand {
-            background: linear-gradient(135deg, var(--brand-orange), var(--brand-red));
+            background: var(--brand-red);
         }
         
         .gradient-brand-blue {
-            background: linear-gradient(135deg, var(--brand-blue), var(--brand-indigo));
+            background: var(--brand-blue);
         }
         
         .gradient-brand-green {
-            background: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
+            background: var(--brand-green);
         }
         
         .gradient-brand-purple {
-            background: linear-gradient(135deg, var(--brand-purple), var(--brand-indigo));
+            background: #4338ca;
         }
 
         footer { border-top: 1px solid rgba(255,255,255,.08); }
+        button, a { -webkit-tap-highlight-color: transparent; }
         footer a { transition: color .2s ease, transform .2s ease; }
         footer a:hover { transform: translateX(2px); }
+
+        /* Page-specific layouts: each page has a distinct, restrained composition. */
+        #home .hero-gradient { min-height: 650px; display: flex; align-items: center; }
+        #home .hero-gradient h1 { max-width: 680px; }
+        #home .slider-container .image-placeholder { background: #e9ece9; border-radius: 16px; box-shadow: 18px 18px 0 #eee7dc; }
+        #home .slider-container .slide { border-radius: 16px; }
+        #home .slider-container > .absolute { border-radius: 10px; right: -12px; bottom: -12px; }
+        #home .grid.md\:grid-cols-3 > a { padding: 2rem; }
+        #home .grid.md\:grid-cols-3 > a > div:first-child { border-radius: 10px; }
+        #home .bg-gray-50 { background: #f4f5f3; }
+
+        #about .prose { font-size: 1.08rem; line-height: 1.9; }
+        #about .prose strong { color: var(--brand-red); }
+        #about .grid.sm\:grid-cols-2.md\:grid-cols-3 > div { background: transparent; box-shadow: none; border: 0; padding: 1rem; }
+        #about .grid.sm\:grid-cols-2.md\:grid-cols-3 > div:hover { transform: none; }
+        #about .grid.sm\:grid-cols-2.md\:grid-cols-3 img { width: 9rem; height: 9rem; object-fit: cover; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 0 1px #e8e7e4; }
+
+        #programmes .bg-white.rounded-3xl { position: relative; padding: 3rem; }
+        #programmes .bg-white.rounded-3xl > .flex:first-child { border-bottom: 1px solid #eceae6; padding-bottom: 1.5rem; }
+        #programmes .grid.md\:grid-cols-3 > div, #programmes .grid.md\:grid-cols-2.lg\:grid-cols-4 > div { border-radius: 10px; border-width: 1px; }
+        #programmes .grid.md\:grid-cols-3 > div { background: #fff; border-color: #e8e7e4; }
+
+        #publications .category-tab { border: 1px solid #dedbd4; background: #fff; color: var(--brand-dark); border-radius: 8px; }
+        #publications .category-tab.active { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+        #publications .filter-btn { border-radius: 7px; }
+        #publications .tract-item, #publications .audio-item, #publications .resource-item { border-radius: 12px; box-shadow: none; }
+        #publications .tract-item:hover, #publications .audio-item:hover, #publications .resource-item:hover { transform: translateY(-3px); border-color: var(--brand-orange); }
+
+        #gallery .grid > button { border: 1px solid #e8e7e4; border-radius: 10px; background: #fff; padding: .35rem; }
+        #gallery .grid > button img { border-radius: 7px; }
+        #gallery .grid > button:hover { border-color: var(--brand-orange); }
+
+        #contact .space-y-6 > div { border: 1px solid #e8e7e4; box-shadow: none; border-radius: 12px; }
+        #contact form input, #contact form textarea { border-radius: 8px !important; border-color: #d9d7d1; }
+        #contact form input:focus, #contact form textarea:focus { border-color: var(--brand-orange) !important; }
+        #contact .gradient-brand-purple { border-radius: 12px; }
+
+        #donations .grid.md\:grid-cols-2.lg\:grid-cols-4 > div { border-radius: 12px; box-shadow: none; }
+        #donations .grid.md\:grid-cols-2.lg\:grid-cols-4 button { border-radius: 8px; font-weight: 600; }
+        #donations .shadow-xl { box-shadow: none; border: 1px solid #e8e7e4; }
         @media (max-width: 1024px) { #navbar > div > div { min-height: 70px; } }
-        @media (max-width: 640px) { section.py-20 { padding-top: 3.75rem; padding-bottom: 3.75rem; } .page-header { min-height: 250px; border-radius: 20px; } }
+        @media (max-width: 640px) { section.py-20 { padding-top: 3.75rem; padding-bottom: 3.75rem; } .page-header { padding: 2.25rem 1.5rem; } }
     </style>
 </head>
 <body class="bg-gray-50">

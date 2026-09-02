@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Header with background image -->
-            <div class="page-header relative text-center mb-16 bg-cover bg-center h-96" style="background-image: url('{{ asset('gallery/g9.png') }}');">
+            <div class="page-header relative text-center mb-16">
                 <div class="absolute inset-0 bg-black bg-opacity-50"></div>
                 <div class="relative z-10 flex flex-col justify-center h-full">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4 text-white">Publications & Resources</h1>
