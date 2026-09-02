@@ -158,13 +158,23 @@
         
         /* Mobile Menu */
         .mobile-menu {
+            display: none;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
         
         .mobile-menu.active {
-            max-height: 600px;
+            display: block;
+            position: fixed;
+            top: 76px;
+            left: 12px;
+            right: 12px;
+            max-height: calc(100vh - 92px);
+            overflow-y: auto;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
         }
         
         /* Pulse (Fire Energy) */
@@ -245,10 +255,10 @@
             z-index: 102;
         }
         
-        /* FIX: Mobile menu backdrop for better UX */
+        /* Mobile menu stays above the page and can scroll independently. */
         @media (max-width: 1024px) {
             .mobile-menu.active {
-                position: relative;
+                position: fixed;
                 z-index: 1000;
                 background: white;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -353,7 +363,7 @@
         #about .prose strong { color: var(--brand-red); }
         #about .grid.sm\:grid-cols-2.md\:grid-cols-3 > div { background: transparent; box-shadow: none; border: 0; padding: 1rem; }
         #about .grid.sm\:grid-cols-2.md\:grid-cols-3 > div:hover { transform: none; }
-        #about .grid.sm\:grid-cols-2.md\:grid-cols-3 img { width: 9rem; height: 9rem; object-fit: cover; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 0 1px #e8e7e4; }
+        #about .grid.sm\:grid-cols-2.md\:grid-cols-3 img { width: 9rem; height: 9rem; object-fit: contain; object-position: center top; background:#f1f5f9; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 0 1px #e8e7e4; }
 
         #programmes .bg-white.rounded-3xl { position: relative; padding: 3rem; }
         #programmes .bg-white.rounded-3xl > .flex:first-child { border-bottom: 1px solid #eceae6; padding-bottom: 1.5rem; }

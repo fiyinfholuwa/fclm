@@ -1,23 +1,57 @@
 @extends('admin.app')
+
 @section('content')
-<div class="content">
-    <div class="page-title"><h1>Manage Gallery</h1><p>Add, replace, hide, or remove gallery pictures.</p></div>
-    @if(session('success')) <p class="mb-4" style="color:green">{{ session('success') }}</p> @endif
-    <div class="card" style="padding:20px; margin-bottom:25px"><h2 class="card-title">Add a picture</h2>
-        <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
-            @csrf <input class="form-control" name="title" placeholder="Picture title (optional)"><br>
-            <input type="file" name="image" accept="image/*" required><br><br>
-            <input class="form-control" type="number" name="display_order" value="{{ $images->max('display_order') + 1 }}" min="1" required><br>
-            <select class="form-control" name="status"><option value="active">Active</option><option value="inactive">Hidden</option></select><br>
-            <button class="btn-primary">Add Picture</button>
-        </form>
+<div class="content media-admin">
+    <div class="admin-page-heading">
+        <div><p class="admin-eyebrow">Website content</p><h1>Gallery</h1><p>Manage the photographs displayed on the public gallery page.</p></div>
+        <button class="admin-add-button" type="button" onclick="document.getElementById('add-gallery-image').showModal()"><i class="fas fa-plus"></i> Add photo</button>
     </div>
-    <div class="card"><div class="table-container"><table><thead><tr><th>Picture</th><th>Title / order</th><th>Visibility</th><th>Update</th><th>Remove</th></tr></thead><tbody>
-    @foreach($images as $image) @php($url = asset($image->image_path))
-    <tr><td><img src="{{ $url }}" alt="" style="width:100px;height:70px;object-fit:cover"></td><td>{{ $image->title }}<br>#{{ $image->display_order }}</td><td>{{ ucfirst($image->status) }}</td><td>
-        <form method="POST" action="{{ route('gallery.update',$image) }}" enctype="multipart/form-data">@csrf @method('PUT')
-        <input name="title" value="{{ $image->title }}" placeholder="Title"><input type="number" name="display_order" value="{{ $image->display_order }}" min="1"><select name="status"><option value="active" @selected($image->status==='active')>Active</option><option value="inactive" @selected($image->status==='inactive')>Hidden</option></select><input type="file" name="image" accept="image/*"><button class="btn-primary">Save</button></form>
-    </td><td><form method="POST" action="{{ route('gallery.delete',$image) }}" onsubmit="return confirm('Remove this image?')">@csrf @method('DELETE')<button class="btn-secondary">Remove</button></form></td></tr>
-    @endforeach</tbody></table></div></div>
+
+    @if(session('success')) <div class="admin-alert success"><i class="fas fa-check-circle"></i>{{ session('success') }}</div> @endif
+    @if($errors->any()) <div class="admin-alert error"><i class="fas fa-circle-exclamation"></i>{{ $errors->first() }}</div> @endif
+
+    <div class="gallery-admin-summary"><span><strong>{{ $images->where('status', 'active')->count() }}</strong> live photos</span><span><strong>{{ $images->where('status', 'inactive')->count() }}</strong> hidden</span><span>Drag-free ordering: change the number and save.</span></div>
+
+    <div class="gallery-admin-grid">
+        @forelse($images as $image)
+            @php($url = asset($image->image_path))
+            <article class="gallery-admin-card {{ $image->status === 'inactive' ? 'is-hidden' : '' }}">
+                <img src="{{ $url }}" alt="{{ $image->title }}">
+                <div class="gallery-admin-card-body">
+                    <div><p class="gallery-admin-order">Photo {{ $image->display_order }}</p><h2>{{ $image->title ?: 'Untitled photo' }}</h2></div>
+                    <span class="admin-status {{ $image->status }}">{{ $image->status === 'active' ? 'Live' : 'Hidden' }}</span>
+                </div>
+                <div class="gallery-admin-actions">
+                    <button type="button" class="admin-quiet-button" onclick="document.getElementById('edit-image-{{ $image->id }}').showModal()"><i class="fas fa-pen"></i> Edit</button>
+                    <form method="POST" action="{{ route('gallery.delete', $image) }}" onsubmit="return confirm('Remove this photo from the gallery?')">@csrf @method('DELETE')<button class="admin-delete-button" title="Remove photo"><i class="fas fa-trash"></i></button></form>
+                </div>
+            </article>
+
+            <dialog id="edit-image-{{ $image->id }}" class="admin-dialog">
+                <div class="admin-dialog-title"><div><p class="admin-eyebrow">Gallery photo</p><h2>Edit photo</h2></div><button type="button" onclick="this.closest('dialog').close()"><i class="fas fa-xmark"></i></button></div>
+                <form method="POST" action="{{ route('gallery.update', $image) }}" enctype="multipart/form-data" class="admin-form">@csrf @method('PUT')
+                    <img class="admin-form-image" src="{{ $url }}" alt="">
+                    <label>Photo title <input name="title" value="{{ old('title', $image->title) }}" placeholder="Optional title"></label>
+                    <div class="admin-form-row"><label>Display order <input type="number" name="display_order" min="1" value="{{ old('display_order', $image->display_order) }}" required></label><label>Visibility <select name="status"><option value="active" @selected($image->status === 'active')>Live on website</option><option value="inactive" @selected($image->status === 'inactive')>Hidden</option></select></label></div>
+                    <label>Replace photo <input type="file" name="image" accept="image/*"><small>Leave empty to keep the current photo.</small></label>
+                    <div class="admin-form-footer"><button type="button" class="admin-quiet-button" onclick="this.closest('dialog').close()">Cancel</button><button class="admin-add-button">Save changes</button></div>
+                </form>
+            </dialog>
+        @empty
+            <div class="admin-empty-state"><i class="fas fa-images"></i><h2>Your gallery is empty</h2><p>Add a photo to start building the public gallery.</p><button class="admin-add-button" type="button" onclick="document.getElementById('add-gallery-image').showModal()">Add first photo</button></div>
+        @endforelse
+    </div>
 </div>
+
+<dialog id="add-gallery-image" class="admin-dialog">
+    <div class="admin-dialog-title"><div><p class="admin-eyebrow">New gallery photo</p><h2>Add photo</h2></div><button type="button" onclick="this.closest('dialog').close()"><i class="fas fa-xmark"></i></button></div>
+    <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data" class="admin-form">@csrf
+        <label>Photo <input type="file" name="image" accept="image/*" required></label>
+        <label>Photo title <input name="title" value="{{ old('title') }}" placeholder="Optional title"></label>
+        <div class="admin-form-row"><label>Display order <input type="number" name="display_order" value="{{ old('display_order', ($images->max('display_order') ?? 0) + 1) }}" min="1" required></label><label>Visibility <select name="status"><option value="active">Live on website</option><option value="inactive">Hidden</option></select></label></div>
+        <div class="admin-form-footer"><button type="button" class="admin-quiet-button" onclick="this.closest('dialog').close()">Cancel</button><button class="admin-add-button">Upload photo</button></div>
+    </form>
+</dialog>
+
+@include('admin.partials.content-admin-styles')
 @endsection
