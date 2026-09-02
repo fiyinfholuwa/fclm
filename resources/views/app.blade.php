@@ -389,7 +389,26 @@
         #donations .grid.md\:grid-cols-2.lg\:grid-cols-4 button { border-radius: 8px; font-weight: 600; }
         #donations .shadow-xl { box-shadow: none; border: 1px solid #e8e7e4; }
         @media (max-width: 1024px) { #navbar > div > div { min-height: 70px; } }
-        @media (max-width: 640px) { section.py-20 { padding-top: 3.75rem; padding-bottom: 3.75rem; } .page-header { padding: 2.25rem 1.5rem; } }
+        @media (max-width: 640px) {
+            section.py-20 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+            .page-header { padding: 2rem 1.25rem; }
+            .page-header h1 { font-size: 2.25rem !important; }
+            .page-header p { font-size: .98rem !important; }
+            .text-5xl { font-size: 2.25rem !important; line-height: 1.1; }
+            .text-4xl { font-size: 1.9rem !important; line-height: 1.15; }
+            .text-3xl { font-size: 1.55rem !important; line-height: 1.2; }
+            .text-2xl { font-size: 1.3rem !important; line-height: 1.25; }
+            .text-xl { font-size: 1rem !important; line-height: 1.6; }
+            .text-lg { font-size: 1rem !important; }
+            .p-8, .lg\:p-12 { padding: 1.5rem !important; }
+            .px-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+            .py-4 { padding-top: .8rem !important; padding-bottom: .8rem !important; }
+            #home .home-hero h1 { font-size: 2.8rem !important; }
+            #home .home-intro { font-size: 1rem !important; }
+            #home .home-section-heading h2, #home .home-mission h2, #home .home-cta h2 { font-size: 2rem !important; }
+            #home .home-link-card { padding: 1.4rem; }
+            #about .prose { font-size: 1rem; line-height: 1.75; }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
